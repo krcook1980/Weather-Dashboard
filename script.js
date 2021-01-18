@@ -12,6 +12,7 @@ $(".searchBtn").click(function () {
     cityName = $(".searchCity").val();
     cityArray.push(cityName);
     localStorage.setItem("City", [cityName]);
+    callInfo();
 
 })
 
@@ -26,9 +27,38 @@ function callInfo() {
         $(".temp").text("Temperature: " + response.main.temp + "    Feels Like: " + response.main.feels_like);
         $(".hum").text("Humidity: " + response.main.humidity);
         $(".wind").text("Wind Speed: " + response.wind.speed);
-        //$(".uv").text("UV Rating: " + response.main.)
+        function callUV() {
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+            var uvURL = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+
+            $.ajax({
+                url: uvURL,
+                method: "GET"
+            }).then(function (response2) {
+                console.log(response2)
+                var rating = response2.current.uvi
+                $(".uv").text("UV Rating: " + response2.current.uvi)
+                if (rating <= 2) {
+                    $(".uv").addClass("text-success");
+                }
+                else if (rating > 2 && rating < 6) {
+                    $(".uv").addClass("text-warning");
+                }
+                else if (rating >= 6) {
+                    $(".uv").addClass("text-danger");
+                }
+
+            })
+        }
+        callUV();
     })
+
+
 }
+
+
+
 
 function renderButtons() {
     var newCity = cityArray[cityArray.length - 1];
