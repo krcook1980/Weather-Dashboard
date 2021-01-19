@@ -5,32 +5,69 @@ var APIKey = "04bb749b9ebcf8398aa868406de732cf";
 var today = moment().format("dddd, MMMM Do YYYY");
 
 cityName = localStorage.getItem("City");
-callInfo();
+currInfo();
+foreInfo();
 
 //on click of search button
 $(".searchBtn").click(function () {
+
     cityName = $(".searchCity").val();
     cityArray.push(cityName);
     localStorage.setItem("City", [cityName]);
-    callInfo();
+    currInfo();
+    renderButtons();
+})
+
+//previous search city buttons, recall info again
+$(".previous").click(function(){
+    var btnCity = $(this).attr("data-city");
+    cityName = btnCity.val();
+    cityArray.push(cityName);
+    localStorage.setItem("City", [cityName]);
+    currInfo();
+    renderButtons();
 
 })
 
-function callInfo() {
+//get and display current weather info
+function currInfo() {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=Imperial&appid=" + APIKey;
+    
+    
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
-        $(".city").text(cityName + "|" + today)
-        $(".temp").text("Temperature: " + response.main.temp + "    Feels Like: " + response.main.feels_like);
-        $(".hum").text("Humidity: " + response.main.humidity);
-        $(".wind").text("Wind Speed: " + response.wind.speed);
-        function callUV() {
+        //console.log(response);
+        var fore = response.weather[0].main
+            var icon = $("#icon")
+            $(".city").text(cityName);
+            $(".date").text(today);
+            $(".temp").text("Temperature: " + response.main.temp);
+            $(".feels").text("Feels Like: " + response.main.feels_like);
+            $(".hum").text("Humidity: " + response.main.humidity);
+            $(".wind").text("Wind Speed: " + response.wind.speed);
+                if (fore === "rain"){
+                icon.addClass("rain");
+                }
+                 else if (fore === "clouds"){
+                icon.addClass("clouds");
+                }
+                else if (fore === "snow"){
+                icon.addClass("snow");
+                }
+                else{
+                icon.addClass("clear");
+                }
+            
+            $(".fore").text(fore).append(icon);       
+        //get, post and add color for uv rating 
+            function uvInfo() {
             var lat = response.coord.lat;
             var lon = response.coord.lon;
+            
             var uvURL = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+            
 
             $.ajax({
                 url: uvURL,
@@ -48,34 +85,41 @@ function callInfo() {
                 else if (rating >= 6) {
                     $(".uv").addClass("text-danger");
                 }
-
             })
         }
-        callUV();
+        uvInfo();
     })
-
-
 }
 
+//get and display 5 day forecast info
+function foreInfo() {
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=Imperial&appid=" + APIKey;
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        //console.log(response);
+        var dailyArray = [response.daily];
+        console.log(dailyArray);
+       
+    })
+}
 
-
-
+//add previously searched cities to buttons for reuse
 function renderButtons() {
     var newCity = cityArray[cityArray.length - 1];
     var button = $("<button>");
-    button.text(newCity);
     var buttonDiv = $("<div>")
+
+    button.text(newCity);
+    button.addClass("previous");
+    button.attr("data-city", newCity)
     buttonDiv.append(button);
     $("#prevSearch").append(buttonDiv);
     $(".searchCity").val("");
 }
 
-
-
-
-//Retrieve info from weather api
-
-    // We then created an AJAX call
 
 
 
@@ -87,4 +131,3 @@ function renderButtons() {
 
 //upon open, show last city searched as beginning point
 
-//https://codepen.io/jasesmith/pen/LbJrXx

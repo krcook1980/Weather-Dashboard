@@ -10,26 +10,55 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" class="style">
 </head>
 
 <body>
- <h1 class="text-center">Weather Dashboard</h1>
- <div class="input-group mb-3">
-  <input type="text" class="form-control searchCity" placeholder="Search for a city" aria-label="Search for a city" aria-describedby="basic-addon2">
-  <div class="input-group-append searchBtn">
-    <span class="input-group-text" id="basic-addon2">Search</span>
+  <!--Header div-->
+  <header>
+    <h1 class="text-center">Weather Dashboard</h1>
+  </header>
+
+  <!--search bar and prev search buttons-->
+  <div class="container">
+    <!-- left div for search and prev search-->
+    <div class="row">
+      <div class="col-md-3 leftCol">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control searchCity" placeholder="Search for a city"
+            aria-label="Search for a city" aria-describedby="basic-addon2">
+          <div class="input-group-append searchBtn">
+            <span class="input-group-text" id="basic-addon2">Search</span>
+          </div>
+        </div>
+
+        <div id="prevSearch"></div>
+        <div id="current"></div>
+      </div>
+      <!--Same row - current weather info for selected city-->
+      <div class="col-md-9 current">
+        <ul>
+          <li class="city"></li>
+          <li class="date"></li>
+          <li class="temp"></li>
+          <li class="feels"></li>
+          <li class="hum"></li>
+          <li class="wind"></li>
+          <li class="fore"></li>
+          <li class="uv"></li>
+        </ul>
+
+        
+      </div>
+
+    </div>
+<!--5 day forecast-->
+<div class="row">
+  <div class="col-md-9 comingFive">
+
   </div>
 </div>
-<div id="prevSearch"></div>
-<div id="current">
-  <h1 class="city"></h1>
-  <p class="temp"> </p>
-  <p class="hum"></p>
-  <p class = "wind"></p>
-  <P class="uv"></P>
-
-</div>
-<div id="5day"></div>
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -40,7 +69,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
   </script>
 </body>

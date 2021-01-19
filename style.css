@@ -1,0 +1,40 @@
+header{
+    background-color: lightgray;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.city {
+    font-weight: bold;
+}
+.date {
+    font-weight: bold;
+}
+.leftCol {
+    float: right;
+}
+.current {
+    background-color: white;
+}
+.comingFive {
+    background-color: blue;
+}
+
+.container {
+    background-color: black;
+}
+
+.rain{
+    content: '\26C8';
+    font-size: 50px;
+
+}
+.clouds{
+    content: '\2601';
+    font-size: 50px;
+
+}
+.clear{
+    content: '\2600';
+    font-size: 50px;
+
+}
