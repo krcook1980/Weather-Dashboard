@@ -15,12 +15,12 @@
 
 <body>
   <!--Header div-->
-  <header>
+  <header class="heading">
     <h1 class="text-center">Weather Dashboard</h1>
   </header>
 
   <!--search bar and prev search buttons-->
-  <div class="main" >
+  <div class="main">
     <!-- left div for search and prev search-->
     <div class="row">
       <div class="col-md-3 leftCol">
@@ -41,7 +41,7 @@
       <!--Same row - current weather info for selected city-->
       <div class="col-md-9 current">
         <ul>
-          <li class="city"></li>
+          <li class="city"><img id="icon"></li>
           <li class="date"></li>
           <li class="temp"></li>
           <li class="feels"></li>
@@ -56,81 +56,12 @@
     <!--5 day forecast-->
     <div class="row forecast text-center">
       <div class="col-md-12 ">
-      <h2 >5 Day Forecast</h2>
+        <h2>5 Day Forecast</h2>
+      </div>
     </div>
-    </div>
-    
-    <div class="row forecast d-flex justify-content-center">
-      
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li class="date1"></li>
-              <li class="temp1"></li>
-              <li class="hum1"></li>
-              <li class="icon1"></li>
-            </ul>
-          </div>
-        
-      </div>
-      
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li class="date2"></li>
-              <li class="temp2"></li>
-              <li class="hum2"></li>
-              <li class="icon2"></li>
-            </ul>
-         
-        </div>
-      </div>
-      
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li class="date3"></li>
-              <li class="temp3"></li>
-              <li class="hum3"></li>
-              <li class="icon3"></li>
-            </ul>
-          </div>
-        
-      </div>
-      
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li class="date4"></li>
-              <li class="temp4"></li>
-              <li class="hum4"></li>
-              <li class="icon4"></li>
-            </ul>
-          </div>
-        
-      </div>
-      
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li class="date5"></li>
-              <li class="temp5"></li>
-              <li class="hum5"></li>
-              <li class="icon5"></li>
-            </ul>
-          </div>
-        
-      </div>
+
+    <div class="card-deck">
+
     </div>
 
   </div>
