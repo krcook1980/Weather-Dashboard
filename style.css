@@ -1,5 +1,5 @@
 header{
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 10px;
 }
 
@@ -15,6 +15,9 @@ header{
 
 }
 
+.mag{
+    width: 25px;
+}
 .snowColor{
     background-color:#f7fff7ff;
     color: #4ecdc4ff;
@@ -23,6 +26,10 @@ header{
 .clearColor {
     background-color:#ffe66dff;
     color: #ff6b6bff;
+}
+
+.card {
+    background-color: #4ecdc4ff ;
 }
 
 /*Icon by weather type // Based on dribbble shot https://dribbble.com/shots/2097042-Widget-Weather by kylor*/
