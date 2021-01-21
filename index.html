@@ -15,12 +15,12 @@
 
 <body>
   <!--Header div-->
-  <header class="heading">
-    <h1 class="text-center">Weather Dashboard</h1>
+  <header>
+    <h1 class="text-center heading">Weather Dashboard</h1>
   </header>
 
   <!--search bar and prev search buttons-->
-  <div class="container"> <img src="">
+  <div class="container">
 
     <div class="row">
 
@@ -35,20 +35,23 @@
         </div>
 
         <div id="prevSearch"></div>
-        <div id="current"></div>
+        
       </div>
       <!--end left column-->
 
       <!-- right side column-->
 
-      <div class="col-md-9 current">
+      <div class="col-md-9">
 
 
         <!--row for current-->
-        <div class="row border ml-3">
-          <div class="col-md-9 current"> 
+        <div class="row border ml-3 current">
+          <div class="col-md-9"> 
           <div class="row pl-1">
-            <h2 class="city date"><img id="icon"></h2>
+            <div class="col-md-7">
+            <h2 class="city date"></h2>
+            </div>
+            <div class="col-md-2 iconC"><img class="icon"> </div>
           </div>
           <div class="row pl-1">
             <p class="temp"></p>

@@ -29,31 +29,46 @@ function currInfo() {
         method: "GET"
     }).then(function (response) {
         var fore = response.weather[0].main
-        var icon = $("#icon");
-        $(".city").text(cityName, today);
+        var icon = $(".icon");
+        console.log(response);
+        $(".city").text(response.name, today);
         $(".date").append(" " + today);
-        $(".temp").text("Temperature: " + response.main.temp);
+        $(".temp").text("Temperature: " + response.main.temp + " °F");
         $(".feels").text("Feels Like: " + response.main.feels_like);
         $(".hum").text("Humidity: " + response.main.humidity + "%");
         $(".wind").text("Wind Speed: " + response.wind.speed);
         if (fore === "Rain") {
-            icon.addClass("rain");
-            $(".heading").addClass("rainColor");
+            icon.attr("src", "./assets/iconRain.png");
+            var imageUrl = "./assets/rain.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
         }
         else if (fore === "Clouds") {
-            icon.addClass("clouds");
-            $(".heading").addClass("cloudColor");
+            icon.attr("src", "./assets/iconCloud.png");
+            var imageUrl = "./assets/clouds.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
         }
         else if (fore === "Snow") {
-            icon.addClass("snow");
-            $(".heading").addClass("snowColor");
+            icon.attr("src", "./assets/iconSnow.png");
+            var imageUrl = "./assets/snow.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
+        }
+        else if (fore === "Mist") {
+            icon.attr("src", "./assets/iconMist.png");
+            var imageUrl = "./assets/mist.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
+        }
+        else if (fore === "Fog") {
+            icon.attr("src", "./assets/iconFog.png");
+            var imageUrl = "./assets/fog.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
         }
         else {
-            icon.addClass("Clear");
-            $(".heading").addClass("clearColor");
+            icon.attr("src", "./assets/iconClear.png");
+            var imageUrl = "./assets/clear.jpg"
+            $("body").css("background-image", "url(" + imageUrl + ")");
         }
 
-        $(".fore").text(fore).append(icon);
+        $(".fore").text(response.weather[0].description)
         //get, post and add color for uv rating and forecast
         function uvInfo() {
             var lat = response.coord.lat;
@@ -66,7 +81,7 @@ function currInfo() {
                 url: uvURL,
                 method: "GET"
             }).then(function (response2) {
-                console.log(response2)
+                //console.log(response2)
                 var rating = response2.current.uvi
                 //UV rating and color
                 $(".uv").text("UV Rating: " + response2.current.uvi)
@@ -88,10 +103,33 @@ function currInfo() {
                     
                     var card = $("<div></div>");
                     var date = $("<h5 class='card-title'>" + moment(response2.daily[i].dt, "X").format("MM/DD/YYYY") + "</h5>");
-                    var icon = response2.daily[i].weather[0].icon;
-                    var temp = $("<p class='card-text'> Temp: " + response2.daily[i].temp.day + "</p>");
+                    var temp = $("<p class='card-text'> Temp: " + response2.daily[i].temp.day + " °F </p>");
                     var hum = $("<p class='card-text'> Humidity: " + response2.daily[i].humidity + "%</p>");
                     var main = $("<p class='card-text'>" + response2.daily[i].weather[0].main + "</p>");
+                    var foreMain = response2.daily[i].weather[0].main;
+                    var icon = "";
+                    console.log("test " +response2.daily[i].weather[0].main )
+                    if (foreMain === "Rain") {
+                       icon = "<img src='./assets/iconRain.png' style='width: 30px;'>";
+                    }
+                    else if (foreMain === "Clouds") {
+                       icon = "<img src='./assets/iconCloud.png' style='width: 30px;'>";
+                       console.log("I should " + icon)
+                    }
+                    else if (foreMain === "Snow") {
+                        icon = "<img src='./assets/iconSnow.png' style='width: 30px;'>";
+                        console.log("I should " + icon)
+                     }
+                    else if (foreMain === "Fog") {
+                       icon = "<img src='./assets/iconFog.png' style='width: 30px;'>";
+                    }
+                    else if (foreMain === "Mist") {
+                        icon = "<img src='./assets/iconMist.png' style='width: 30px;'>";
+                    }
+                    else {
+                       icon = "<img src='./assets/iconClear.png' style='width: 30px;'>";
+                        
+                    }
 
                     card.addClass("card");
                     card.append(date, icon, temp, hum, main);
@@ -119,7 +157,7 @@ function renderButtons() {
     button.addClass("previous");
     button.attr("data-city", newCity)
     buttonDiv.append(button);
-    $("#prevSearch").append(buttonDiv);
+    $("#prevSearch").prepend(buttonDiv);
     $(".searchCity").val("");
     //previous search city buttons, recall info again
     $(".previous").on("click", function () {
