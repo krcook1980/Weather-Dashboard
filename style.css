@@ -1,3 +1,11 @@
+/* Setting background image for document */
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+/* Additional class styling */
 .heading{
     padding: 20px;
     background-color: #6b9080ff;
@@ -5,11 +13,12 @@
     margin-bottom: 10px;
 }
 
-body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+.leftCol {
+    background-color: #eaf4f4ff;
+}
+
+.search{
+    color:  rgb(48, 61, 56);
 }
 
 .mag{
@@ -24,7 +33,7 @@ body {
 
 .current{
    background-color:  #eaf4f4ff;
-   /* background-color: black; */
+   color:  rgb(47, 59, 54);
 }
 
 .icon{
@@ -33,5 +42,4 @@ body {
 
 .icon5d{
     width: 20px;
-
 }
