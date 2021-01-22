@@ -20,4 +20,10 @@ Weather icon as well as background image change based on weather type
 - [freeformatter](https://www.freeformatter.com/html-validator.html)
 - [coolors.co](https://coolors.co/) for color selection
 - [dovora.com](https://www.dovora.com/resources/weather-icons/) for weather icons
-- Bootcamp Activities 5, 8, 9
+- Bootcamp Activities 5, 8, 9, 11, 14
+
+## Screenshots
+Upon open
+<img src="https://github.com/krcook1980/Weather-Dashboard/blob/main/assets/scrn2.JPG">
+Additional search
+<img src="https://github.com/krcook1980/Weather-Dashboard/blob/main/assets/scrn1.JPG">
