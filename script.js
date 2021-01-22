@@ -24,7 +24,7 @@ $(".searchCity").keypress(function(e){
     if(e.which == 13) {
         searchNow();
     }
-})
+});
 
 //get and display current weather info, must use to get lat and lon for the uv and forecast
 function currInfo() {
