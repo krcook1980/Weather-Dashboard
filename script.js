@@ -6,7 +6,13 @@ var today = moment().format("MM/DD/YYYY");
 
 //upon open of page, get last city search from local storage and display
 cityName = localStorage.getItem("City");
+if (cityName === null){
+    var imageUrl = "./assets/clear.jpg";
+    $("body").css("background-image", "url(" + imageUrl + ")");
+}
+else{
 currInfo();
+}
 
 //on click of search button get weather data and create button
 function searchNow (){
@@ -88,7 +94,7 @@ function currInfo() {
             var lat = response.coord.lat;
             var lon = response.coord.lon;
 
-            var uvURL = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=Imperial&appid=" + APIKey;
+            var uvURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=Imperial&appid=" + APIKey;
 
 
             $.ajax({
